@@ -382,6 +382,9 @@ async function execute(argv: any) {
     }
   }
 
+  if (downloader.runner._impl._running) {
+    downloader.runner.stop();
+  }
   logger.log('Closing HTTP agents...');
 
   logger.log('All dumping(s) finished with success.');

@@ -6,6 +6,7 @@ import { writeFilePromise, mkdirPromise } from '../../src/util';
 import { join } from 'path';
 import execa = require('execa');
 import 'dotenv/config';
+require('leaked-handles');
 // import { ZimReader } from '@openzim/libzim';
 
 const now = new Date();

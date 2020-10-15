@@ -6,6 +6,8 @@ import { writeFilePromise, mkdirPromise } from '../../src/util';
 import { join } from 'path';
 import execa = require('execa');
 import 'dotenv/config';
+import fs from 'fs'
+require('leaked-handles');
 // import { ZimReader } from '@openzim/libzim';
 
 const now = new Date();
@@ -58,7 +60,7 @@ test('Local Parsoid', async (t) => {
 
     t.ok(true, 'Scraped gbf wiki articles');
     // TODO: clear test dir
-    rimraf.sync(testId);
+    fs.rmdirSync(testId, {recursive: true});
 
     const redisScan = await execa.command(`redis-cli --scan`);
     t.equal(redisScan.stdout, '', 'Redis has been cleared');

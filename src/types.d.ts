@@ -13,6 +13,7 @@ declare module 'country-language';
 declare module 'imagemin-advpng';
 declare module 'imagemin-jpegoptim';
 declare module 'imagemin-webp';
+declare module 'leaked-handles';
 
 type DominoElement = any;
 

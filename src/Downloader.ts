@@ -101,6 +101,8 @@ class Downloader {
   public cssDependenceUrls: KVS<boolean> = {};
   public readonly webp: boolean = false;
 
+  public runner = new ServiceRunner();
+
   private readonly uaString: string;
   private activeRequests = 0;
   private maxActiveRequests = 1;
@@ -271,9 +273,7 @@ class Downloader {
   public async initLocalServices(): Promise<void> {
     logger.log('Starting Parsoid & MCS');
 
-    const runner = new ServiceRunner();
-
-    await runner.start({
+    await this.runner.start({
       num_workers: 0,
       services: [{
         name: 'parsoid',
