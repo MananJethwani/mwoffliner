@@ -144,6 +144,7 @@ async function execute(argv: any) {
   /* Instanciate custom flavour module */
   logger.info(`Using custom flavour: ${customFlavour || 'no'}`);
   const customProcessor = customFlavour ?
+    // tslint:disable-next-line: new-parens
     new(require(customFlavour)) : null;
 
   // Check for S3 creds
