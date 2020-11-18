@@ -15,7 +15,7 @@ const testId = join(process.cwd(), `mwo-test-${+now}`);
 const articleListUrl = join(testId, '/articleList');
 
 test('Webp Option check', async (t) => {
-    await execa.command(`redis-cli flushall`);
+    await execa.command(`sudo redis-cli flushall`);
     await mkdirPromise(testId);
 
     const articleList = `
