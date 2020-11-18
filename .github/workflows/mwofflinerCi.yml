@@ -36,7 +36,7 @@ jobs:
     - run: dev/install-zimtools.sh
     - run: npm run lint
     - run: npm run build
-    - run: REDIS=redis://0.0.0.0:6379 ZIMCHECK_PATH=`find .. -name zimcheck` npm run codecov
+    - run: REDIS=redis://127.0.0.1:6379 ZIMCHECK_PATH=`find .. -name zimcheck` npm run codecov
     - run: npm run jest
     - run: ./dev/publish.sh
     - uses: codecov/codecov-action@v1
