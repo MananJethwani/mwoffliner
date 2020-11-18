@@ -234,11 +234,13 @@ export function getMediaBase(url: string, escape: boolean, dir: string = config.
   let filename;
 
   // Image thumbs
+  // tslint:disable-next-line: no-conditional-assignment
   if ((parts = IMAGE_THUMB_URL_REGEX.exec(decodedUrl)) !== null) {
       filename = parts[1].length > parts[3].length ? parts[1] : parts[3];
   }
 
   // Latex (equations) & Graphoid
+  // tslint:disable-next-line: no-conditional-assignment
   else if ((parts = LATEX_GRAPHOID_IMAGE_URL_REGEX.exec(decodedUrl)) !== null) {
       filename = parts[1] + '.svg';
   }
