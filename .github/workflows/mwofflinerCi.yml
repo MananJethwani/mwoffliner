@@ -17,7 +17,6 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x, 13.x, 14.x]
-        redis-version: [6]
 
     steps:
     - uses: actions/checkout@v2
@@ -25,11 +24,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Start Redis
-      uses: supercharge/redis-github-action@1.1.0
+    - uses: zhulik/redis-action@1.1.0
       with:
-        redis-version: ${{ matrix.redis-version }}
-
+        redis version: '6'
+        number of databases: 10
     - run: sudo apt install gcc-4.8 g++-4.8 python3-pip libbz2-dev ccache zlib1g-dev uuid-dev
     - run: npm ci
     - run: npm i -g codecov
