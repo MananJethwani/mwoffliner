@@ -32,11 +32,11 @@ jobs:
     - run: sudo apt install gcc-4.8 g++-4.8 python3-pip libbz2-dev ccache zlib1g-dev uuid-dev
     - run: npm ci
     - run: npm i -g codecov
+    - run: REDIS=redis://127.0.0.1:6379 ZIMCHECK_PATH=`find .. -name zimcheck` npm run codecov
     - run: dev/install-zimtools.sh
     - run: npm run build --if-present
     - run: npm run lint
     - run: npm run build
-    - run: REDIS=redis://127.0.0.1:6379 ZIMCHECK_PATH=`find .. -name zimcheck` npm run codecov
     - run: npm run jest
     - run: npm test
     - run: ./dev/publish.sh
