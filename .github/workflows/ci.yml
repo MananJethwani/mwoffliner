@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2.1.4
       with:
         node-version: ${{ matrix.node-version }}
     - uses: shogo82148/actions-setup-redis@v1
@@ -27,6 +27,9 @@ jobs:
 
     - name: installing add on packages
       run: sudo apt install gcc-9 g++-9 python3-pip libbz2-dev ccache zlib1g-dev uuid-dev
+      
+    - name: deleting proxy
+      run: npm config delete proxy && npm config delete https-proxy
 
     - name: installing dependencies
       run: npm ci
